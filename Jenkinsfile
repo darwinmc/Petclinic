@@ -3,7 +3,7 @@ pipeline {
     
     tools{
         jdk 'jdk11'
-        maven 'maven3'
+        maven 'maven'
     }
     
     environment {
@@ -14,7 +14,7 @@ pipeline {
         
         stage("Git Checkout"){
             steps{
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/jaiswaladi246/Petclinic.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/darwinmc/Petclinic.git'
             }
         }
         
@@ -54,7 +54,7 @@ pipeline {
             }
         }
         
-        stage("Docker Build & Push"){
+       /* stage("Docker Build & Push"){
             steps{
                 script{
                    withDockerRegistry(credentialsId: '58be877c-9294-410e-98ee-6a959d73b352', toolName: 'docker') {
@@ -71,11 +71,11 @@ pipeline {
             steps{
                 sh " trivy image adijaiswal/pet-clinic123:latest"
             }
-        }
+        }*/
         
         stage("Deploy To Tomcat"){
             steps{
-                sh "cp  /var/lib/jenkins/workspace/CI-CD/target/petclinic.war /opt/apache-tomcat-9.0.65/webapps/ "
+                sh "cp  /var/lib/jenkins/workspace/sample/target/petclinic.war /opt/apache-tomcat-9.0.67/webapps/ "
             }
         }
     }
