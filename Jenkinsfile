@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent jenkins-master 
     
     tools{
         jdk 'jdk11'
@@ -20,7 +20,7 @@ pipeline {
         
         stage("Compile"){
             steps{
-                sh "mvn clean compile"
+                sh "export JAVA_HOME=/path/to/jdk11/ mvn clean compile"
             }
         }
         
