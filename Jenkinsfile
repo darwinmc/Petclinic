@@ -20,20 +20,20 @@ pipeline {
         
         stage("Compile"){
             steps{
-                sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean compile"
+                sh "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean compile"
             }
         }
         
          stage("Test Cases"){
             steps{
-                sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn test"
+                sh "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn test"
             }
         }
 /*        
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
+                    sh '''JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=Petclinic '''
     
@@ -50,7 +50,7 @@ pipeline {
   */      
          stage("Build"){
             steps{
-                sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean package"
+                sh "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean package"
             }
         }
         
