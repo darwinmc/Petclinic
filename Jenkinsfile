@@ -26,14 +26,14 @@ pipeline {
         
          stage("Test Cases"){
             steps{
-                sh "mvn test"
+                sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn test"
             }
         }
         
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
+                    sh ''' export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=Petclinic '''
     
@@ -50,7 +50,7 @@ pipeline {
         
          stage("Build"){
             steps{
-                sh " mvn clean install"
+                sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean install"
             }
         }
         
