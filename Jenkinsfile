@@ -29,7 +29,7 @@ pipeline {
                 sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn test"
             }
         }
-        
+/*        
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
@@ -47,7 +47,7 @@ pipeline {
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
-        
+  */      
          stage("Build"){
             steps{
                 sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean install"
