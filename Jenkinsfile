@@ -50,7 +50,7 @@ pipeline {
   */      
          stage("Build"){
             steps{
-                sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean install"
+                sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean package"
             }
         }
         
