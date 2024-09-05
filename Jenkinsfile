@@ -1,5 +1,5 @@
 pipeline {
-    agent {jenkins-master} 
+    agent { label 'jenkins-master' }
     
     tools{
         jdk 'jdk11'
